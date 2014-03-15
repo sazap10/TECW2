@@ -114,7 +114,9 @@ public class JavaBaseListener implements JavaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitImportDeclaration(@NotNull JavaParser.ImportDeclarationContext ctx) { }
+	@Override public void exitImportDeclaration(@NotNull JavaParser.ImportDeclarationContext ctx) { 
+		System.out.println("IMPORT");
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -374,7 +376,9 @@ public class JavaBaseListener implements JavaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLocalVariableDeclarationStatement(@NotNull JavaParser.LocalVariableDeclarationStatementContext ctx) { }
+	@Override public void exitLocalVariableDeclarationStatement(@NotNull JavaParser.LocalVariableDeclarationStatementContext ctx) { 
+		System.out.println("VARDEF");
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -485,13 +489,17 @@ public class JavaBaseListener implements JavaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterClassDeclaration(@NotNull JavaParser.ClassDeclarationContext ctx) { }
+	@Override public void enterClassDeclaration(@NotNull JavaParser.ClassDeclarationContext ctx) {
+		System.out.println("BEGINCLASS");
+	}
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitClassDeclaration(@NotNull JavaParser.ClassDeclarationContext ctx) { }
+	@Override public void exitClassDeclaration(@NotNull JavaParser.ClassDeclarationContext ctx) { 
+		System.out.println("ENDCLASS");
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -816,7 +824,9 @@ public class JavaBaseListener implements JavaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPackageDeclaration(@NotNull JavaParser.PackageDeclarationContext ctx) { }
+	@Override public void exitPackageDeclaration(@NotNull JavaParser.PackageDeclarationContext ctx) { 
+		System.out.println("PACKAGE");
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -998,7 +1008,9 @@ public class JavaBaseListener implements JavaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCompilationUnit(@NotNull JavaParser.CompilationUnitContext ctx) { }
+	@Override public void exitCompilationUnit(@NotNull JavaParser.CompilationUnitContext ctx) { 
+		System.out.println("EOF");
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -1122,13 +1134,17 @@ public class JavaBaseListener implements JavaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMethodDeclaration(@NotNull JavaParser.MethodDeclarationContext ctx) { }
+	@Override public void enterMethodDeclaration(@NotNull JavaParser.MethodDeclarationContext ctx) { 
+		System.out.println("BEGINMETHOD");
+	}
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMethodDeclaration(@NotNull JavaParser.MethodDeclarationContext ctx) { }
+	@Override public void exitMethodDeclaration(@NotNull JavaParser.MethodDeclarationContext ctx) { 
+		System.out.println("ENDMETHOD");
+	}
 
 	/**
 	 * {@inheritDoc}
