@@ -401,18 +401,45 @@ localVariableDeclaration
     :   variableModifier* type variableDeclarators
     ;
 
+if_else_statement
+	:	'if' parExpression statement ('else' statement)?
+	;
+
+for_loop
+	:	'for' '(' forControl ')' statement
+	;
+
+while_loop
+	:	'while' parExpression statement
+	;
+
+do_while_loop
+	:	'do' statement 'while' parExpression ';'
+	;
+
+try_statement
+	:	'try' block (catchClause+ finallyBlock? | finallyBlock)
+	|	'try' resourceSpecification block catchClause* finallyBlock?
+	;
+	
+switch_block
+	:	'switch' parExpression '{' switchBlockStatementGroup* switchLabel* '}'
+	
+synchronized_block
+	:	'synchronized' parExpression block
+	;
+	
 statement
     :   block
     |   ASSERT expression (':' expression)? ';'
-    |   'if' parExpression statement ('else' statement)?
-    |   'for' '(' forControl ')' statement
-    |   'while' parExpression statement
-    |   'do' statement 'while' parExpression ';'
-    |   'try' block (catchClause+ finallyBlock? | finallyBlock)
-    |   'try' resourceSpecification block catchClause* finallyBlock?
-    |   'switch' parExpression '{' switchBlockStatementGroup* switchLabel* '}'
-    |   'synchronized' parExpression block
-    |   'return' expression? ';'
+    |   if_else_statement
+    |   for_loop
+    |   while_loop
+    |   do_while_loop
+    |   try_statement
+    |   switch_block
+    |   synchronized_block
+    |   return_statement
     |   'throw' expression ';'
     |   'break' Identifier? ';'
     |   'continue' Identifier? ';'
@@ -420,6 +447,10 @@ statement
     |   statementExpression ';'
     |   Identifier ':' statement
     ;
+
+return_statement
+	:	'return' expression? ';'
+	;
 
 catchClause
     :   'catch' '(' variableModifier* catchType Identifier ')' block
@@ -607,7 +638,7 @@ arguments
 
 // LEXER
 
-// §3.9 Keywords
+// Â§3.9 Keywords
 
 ABSTRACT      : 'abstract';
 ASSERT        : 'assert';
@@ -660,7 +691,7 @@ VOID          : 'void';
 VOLATILE      : 'volatile';
 WHILE         : 'while';
 
-// §3.10.1 Integer Literals
+// Â§3.10.1 Integer Literals
 
 IntegerLiteral
     :   DecimalIntegerLiteral
@@ -790,7 +821,7 @@ BinaryDigitOrUnderscore
     |   '_'
     ;
 
-// §3.10.2 Floating-Point Literals
+// Â§3.10.2 Floating-Point Literals
 
 FloatingPointLiteral
     :   DecimalFloatingPointLiteral
@@ -851,14 +882,14 @@ BinaryExponentIndicator
     :   [pP]
     ;
 
-// §3.10.3 Boolean Literals
+// Â§3.10.3 Boolean Literals
 
 BooleanLiteral
     :   'true'
     |   'false'
     ;
 
-// §3.10.4 Character Literals
+// Â§3.10.4 Character Literals
 
 CharacterLiteral
     :   '\'' SingleCharacter '\''
@@ -870,7 +901,7 @@ SingleCharacter
     :   ~['\\]
     ;
 
-// §3.10.5 String Literals
+// Â§3.10.5 String Literals
 
 StringLiteral
     :   '"' StringCharacters? '"'
@@ -887,7 +918,7 @@ StringCharacter
     |   EscapeSequence
     ;
 
-// §3.10.6 Escape Sequences for Character and String Literals
+// Â§3.10.6 Escape Sequences for Character and String Literals
 
 fragment
 EscapeSequence
@@ -913,13 +944,13 @@ ZeroToThree
     :   [0-3]
     ;
 
-// §3.10.7 The Null Literal
+// Â§3.10.7 The Null Literal
 
 NullLiteral
     :   'null'
     ;
 
-// §3.11 Separators
+// Â§3.11 Separators
 
 LPAREN          : '(';
 RPAREN          : ')';
@@ -931,7 +962,7 @@ SEMI            : ';';
 COMMA           : ',';
 DOT             : '.';
 
-// §3.12 Operators
+// Â§3.12 Operators
 
 ASSIGN          : '=';
 GT              : '>';
@@ -969,7 +1000,7 @@ LSHIFT_ASSIGN   : '<<=';
 RSHIFT_ASSIGN   : '>>=';
 URSHIFT_ASSIGN  : '>>>=';
 
-// §3.8 Identifiers (must appear after all keywords in the grammar)
+// Â§3.8 Identifiers (must appear after all keywords in the grammar)
 
 Identifier
     :   JavaLetter JavaLetterOrDigit*
