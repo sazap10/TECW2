@@ -16,6 +16,10 @@ public class JavaBaseListener implements JavaListener {
 	private String tokens = "";
 	public static final String DELIMETER = ",";
 
+	private void addTokenToString(String token) {
+		tokens += token + DELIMETER;
+	}
+
 	public String getTokens() {
 		return tokens;
 	}
@@ -201,7 +205,7 @@ public class JavaBaseListener implements JavaListener {
 	@Override
 	public void exitImportDeclaration(
 			@NotNull JavaParser.ImportDeclarationContext ctx) {
-		System.out.println("IMPORT");
+		addTokenToString("IMPORT");
 	}
 
 	/**
@@ -670,7 +674,7 @@ public class JavaBaseListener implements JavaListener {
 	@Override
 	public void exitLocalVariableDeclarationStatement(
 			@NotNull JavaParser.LocalVariableDeclarationStatementContext ctx) {
-		System.out.println("VARDEF");
+		addTokenToString("VARDEF");
 	}
 
 	/**
@@ -798,6 +802,7 @@ public class JavaBaseListener implements JavaListener {
 	 */
 	@Override
 	public void enterSwitchLabel(@NotNull JavaParser.SwitchLabelContext ctx) {
+		addTokenToString("BEGINSWITCH");
 	}
 
 	/**
@@ -809,6 +814,7 @@ public class JavaBaseListener implements JavaListener {
 	 */
 	@Override
 	public void exitSwitchLabel(@NotNull JavaParser.SwitchLabelContext ctx) {
+		addTokenToString("ENDSWITCH");
 	}
 
 	/**
@@ -866,7 +872,7 @@ public class JavaBaseListener implements JavaListener {
 	@Override
 	public void enterClassDeclaration(
 			@NotNull JavaParser.ClassDeclarationContext ctx) {
-		System.out.println("BEGINCLASS");
+		addTokenToString("BEGINCLASS");
 	}
 
 	/**
@@ -879,7 +885,7 @@ public class JavaBaseListener implements JavaListener {
 	@Override
 	public void exitClassDeclaration(
 			@NotNull JavaParser.ClassDeclarationContext ctx) {
-		System.out.println("ENDCLASS");
+		addTokenToString("ENDCLASS");
 	}
 
 	/**
@@ -1459,7 +1465,7 @@ public class JavaBaseListener implements JavaListener {
 	@Override
 	public void exitPackageDeclaration(
 			@NotNull JavaParser.PackageDeclarationContext ctx) {
-		System.out.println("PACKAGE");
+		addTokenToString("PACKAGE");
 	}
 
 	/**
@@ -1782,7 +1788,7 @@ public class JavaBaseListener implements JavaListener {
 	@Override
 	public void exitCompilationUnit(
 			@NotNull JavaParser.CompilationUnitContext ctx) {
-		System.out.println("EOF");
+		addTokenToString("EOF");
 	}
 
 	/**
@@ -2006,7 +2012,7 @@ public class JavaBaseListener implements JavaListener {
 	@Override
 	public void enterMethodDeclaration(
 			@NotNull JavaParser.MethodDeclarationContext ctx) {
-		System.out.println("BEGINMETHOD");
+		addTokenToString("BEGINMETHOD");
 	}
 
 	/**
@@ -2019,7 +2025,7 @@ public class JavaBaseListener implements JavaListener {
 	@Override
 	public void exitMethodDeclaration(
 			@NotNull JavaParser.MethodDeclarationContext ctx) {
-		System.out.println("ENDMETHOD");
+		addTokenToString("ENDMETHOD");
 	}
 
 	/**
