@@ -13,16 +13,6 @@ import org.antlr.v4.runtime.tree.TerminalNode;
  * the available methods.
  */
 public class JavaBaseListener implements JavaListener {
-	private String tokens = "";
-	public static final String DELIMETER = ",";
-
-	private void addTokenToString(String token) {
-		tokens += token + DELIMETER;
-	}
-
-	public String getTokens() {
-		return tokens;
-	}
 
 	/**
 	 * {@inheritDoc}
@@ -205,7 +195,6 @@ public class JavaBaseListener implements JavaListener {
 	@Override
 	public void exitImportDeclaration(
 			@NotNull JavaParser.ImportDeclarationContext ctx) {
-		addTokenToString("IMPORT");
 	}
 
 	/**
@@ -674,7 +663,6 @@ public class JavaBaseListener implements JavaListener {
 	@Override
 	public void exitLocalVariableDeclarationStatement(
 			@NotNull JavaParser.LocalVariableDeclarationStatementContext ctx) {
-		addTokenToString("VARDEF");
 	}
 
 	/**
@@ -802,7 +790,7 @@ public class JavaBaseListener implements JavaListener {
 	 */
 	@Override
 	public void enterSwitchLabel(@NotNull JavaParser.SwitchLabelContext ctx) {
-		addTokenToString("BEGINSWITCH");
+
 	}
 
 	/**
@@ -814,7 +802,7 @@ public class JavaBaseListener implements JavaListener {
 	 */
 	@Override
 	public void exitSwitchLabel(@NotNull JavaParser.SwitchLabelContext ctx) {
-		addTokenToString("ENDSWITCH");
+
 	}
 
 	/**
@@ -872,7 +860,7 @@ public class JavaBaseListener implements JavaListener {
 	@Override
 	public void enterClassDeclaration(
 			@NotNull JavaParser.ClassDeclarationContext ctx) {
-		addTokenToString("BEGINCLASS");
+
 	}
 
 	/**
@@ -885,7 +873,7 @@ public class JavaBaseListener implements JavaListener {
 	@Override
 	public void exitClassDeclaration(
 			@NotNull JavaParser.ClassDeclarationContext ctx) {
-		addTokenToString("ENDCLASS");
+
 	}
 
 	/**
@@ -1465,7 +1453,7 @@ public class JavaBaseListener implements JavaListener {
 	@Override
 	public void exitPackageDeclaration(
 			@NotNull JavaParser.PackageDeclarationContext ctx) {
-		addTokenToString("PACKAGE");
+
 	}
 
 	/**
@@ -1788,7 +1776,7 @@ public class JavaBaseListener implements JavaListener {
 	@Override
 	public void exitCompilationUnit(
 			@NotNull JavaParser.CompilationUnitContext ctx) {
-		addTokenToString("EOF");
+
 	}
 
 	/**
@@ -2012,7 +2000,7 @@ public class JavaBaseListener implements JavaListener {
 	@Override
 	public void enterMethodDeclaration(
 			@NotNull JavaParser.MethodDeclarationContext ctx) {
-		addTokenToString("BEGINMETHOD");
+
 	}
 
 	/**
@@ -2025,7 +2013,7 @@ public class JavaBaseListener implements JavaListener {
 	@Override
 	public void exitMethodDeclaration(
 			@NotNull JavaParser.MethodDeclarationContext ctx) {
-		addTokenToString("ENDMETHOD");
+
 	}
 
 	/**
