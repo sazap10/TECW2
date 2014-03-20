@@ -1,4 +1,3 @@
-package com.ourClone.Parser;
 // Generated from Java.g4 by ANTLR 4.2
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
@@ -18,6 +17,17 @@ public interface JavaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitInnerCreator(@NotNull JavaParser.InnerCreatorContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link JavaParser#try_statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterTry_statement(@NotNull JavaParser.Try_statementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaParser#try_statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitTry_statement(@NotNull JavaParser.Try_statementContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link JavaParser#genericMethodDeclaration}.
@@ -84,6 +94,17 @@ public interface JavaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitEnumConstant(@NotNull JavaParser.EnumConstantContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link JavaParser#do_while_loop}.
+	 * @param ctx the parse tree
+	 */
+	void enterDo_while_loop(@NotNull JavaParser.Do_while_loopContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaParser#do_while_loop}.
+	 * @param ctx the parse tree
+	 */
+	void exitDo_while_loop(@NotNull JavaParser.Do_while_loopContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link JavaParser#importDeclaration}.
@@ -361,6 +382,17 @@ public interface JavaListener extends ParseTreeListener {
 	void exitExplicitGenericInvocation(@NotNull JavaParser.ExplicitGenericInvocationContext ctx);
 
 	/**
+	 * Enter a parse tree produced by {@link JavaParser#return_statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterReturn_statement(@NotNull JavaParser.Return_statementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaParser#return_statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitReturn_statement(@NotNull JavaParser.Return_statementContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link JavaParser#parExpression}.
 	 * @param ctx the parse tree
 	 */
@@ -526,6 +558,17 @@ public interface JavaListener extends ParseTreeListener {
 	void exitResources(@NotNull JavaParser.ResourcesContext ctx);
 
 	/**
+	 * Enter a parse tree produced by {@link JavaParser#synchronized_block}.
+	 * @param ctx the parse tree
+	 */
+	void enterSynchronized_block(@NotNull JavaParser.Synchronized_blockContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaParser#synchronized_block}.
+	 * @param ctx the parse tree
+	 */
+	void exitSynchronized_block(@NotNull JavaParser.Synchronized_blockContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link JavaParser#formalParameter}.
 	 * @param ctx the parse tree
 	 */
@@ -535,6 +578,17 @@ public interface JavaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitFormalParameter(@NotNull JavaParser.FormalParameterContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link JavaParser#for_loop}.
+	 * @param ctx the parse tree
+	 */
+	void enterFor_loop(@NotNull JavaParser.For_loopContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaParser#for_loop}.
+	 * @param ctx the parse tree
+	 */
+	void exitFor_loop(@NotNull JavaParser.For_loopContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link JavaParser#type}.
@@ -711,6 +765,17 @@ public interface JavaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitCatchType(@NotNull JavaParser.CatchTypeContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link JavaParser#switch_block}.
+	 * @param ctx the parse tree
+	 */
+	void enterSwitch_block(@NotNull JavaParser.Switch_blockContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaParser#switch_block}.
+	 * @param ctx the parse tree
+	 */
+	void exitSwitch_block(@NotNull JavaParser.Switch_blockContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link JavaParser#typeArguments}.
@@ -911,17 +976,6 @@ public interface JavaListener extends ParseTreeListener {
 	void exitAnnotationTypeBody(@NotNull JavaParser.AnnotationTypeBodyContext ctx);
 
 	/**
-	 * Enter a parse tree produced by {@link JavaParser#qualifiedNameList}.
-	 * @param ctx the parse tree
-	 */
-	void enterQualifiedNameList(@NotNull JavaParser.QualifiedNameListContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JavaParser#qualifiedNameList}.
-	 * @param ctx the parse tree
-	 */
-	void exitQualifiedNameList(@NotNull JavaParser.QualifiedNameListContext ctx);
-
-	/**
 	 * Enter a parse tree produced by {@link JavaParser#creator}.
 	 * @param ctx the parse tree
 	 */
@@ -933,6 +987,17 @@ public interface JavaListener extends ParseTreeListener {
 	void exitCreator(@NotNull JavaParser.CreatorContext ctx);
 
 	/**
+	 * Enter a parse tree produced by {@link JavaParser#qualifiedNameList}.
+	 * @param ctx the parse tree
+	 */
+	void enterQualifiedNameList(@NotNull JavaParser.QualifiedNameListContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaParser#qualifiedNameList}.
+	 * @param ctx the parse tree
+	 */
+	void exitQualifiedNameList(@NotNull JavaParser.QualifiedNameListContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link JavaParser#memberDeclaration}.
 	 * @param ctx the parse tree
 	 */
@@ -942,6 +1007,17 @@ public interface JavaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitMemberDeclaration(@NotNull JavaParser.MemberDeclarationContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link JavaParser#while_loop}.
+	 * @param ctx the parse tree
+	 */
+	void enterWhile_loop(@NotNull JavaParser.While_loopContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaParser#while_loop}.
+	 * @param ctx the parse tree
+	 */
+	void exitWhile_loop(@NotNull JavaParser.While_loopContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link JavaParser#methodDeclaration}.
@@ -1008,6 +1084,17 @@ public interface JavaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitElementValuePair(@NotNull JavaParser.ElementValuePairContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link JavaParser#if_else_statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterIf_else_statement(@NotNull JavaParser.If_else_statementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaParser#if_else_statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitIf_else_statement(@NotNull JavaParser.If_else_statementContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link JavaParser#methodBody}.

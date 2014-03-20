@@ -424,6 +424,7 @@ try_statement
 	
 switch_block
 	:	'switch' parExpression '{' switchBlockStatementGroup* switchLabel* '}'
+	;
 	
 synchronized_block
 	:	'synchronized' parExpression block
