@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -51,7 +52,7 @@ public class OurClone {
 
 	private void compare(List<Token> tokensA, List<Token> tokensB) {
 
-		List<Match> tiles = new ArrayList<Match>();
+		Set<Match> tiles = new ArrayList<Match>();
 		int maxMatch;
 
 		do
@@ -79,33 +80,63 @@ public class OurClone {
 							{
 								j++;
 							}
+							Match newMatch = new Match(indexOfTokenA, indexOfTokenB,j);
+							List<String> newMatchsubString  = getTokenSubString(tokensA, newMatch);
 							if(j == maxMatch)
 							{
-								
+								boolean overlaps = false;
+								List<String> matchSubString;
+								for(Match match : matches)
+								{	
+									matchSubString = getTokenSubString(tokensA, match);
+									if(isOverlapped(matchSubString, newMatchsubString )){
+										overlaps = true;
+										break;
+									}
+								}
+								if(!overlaps)
+								{
+									matches.add(newMatch);
+								}
+							}
+							else if (j>maxMatch)
+							{
+								matches.clear();
+								matches.add(newMatch);
+								maxMatch = j;
 							}
 						}
 					}
 				}
+			}
+			for(Match match : matches)
+			{
+				for(int j = 0 ; j< maxMatch ; j++)
+				{
+					tokensA.get(match.getIndexA()+j).setMarked(true);
+					tokensB.get(match.getIndexB()+j).setMarked(true);
+				}
+				tiles = tiles.
 			}
 
 
 		}while(maxMatch > MINIMUM);
 	}
 	
-	private List<Token> getTokenSubString(List<Token> fullTokensList, Match match)
+	private List<String> getTokenSubString(List<Token> fullTokensList, Match match)
 	{
-		List<Token> tokenSubString = new ArrayList<Token>();
+		List<String> tokenSubString = new ArrayList<String>();
 		int startIndex = match.getIndexA();
 		for(int i = 0 ; i< match.getLength(); i++)
 		{
-			tokenSubString.add(fullTokensList.get(startIndex+i));
+			tokenSubString.add(fullTokensList.get(startIndex+i).getTokenString());
 			
 		}
 		
 		return tokenSubString;
 	}
 	
-	private boolean isOverlapped(List<Token> matchA, List<Token> matchB)
+	private boolean isOverlapped(List<String> matchA, List<String> matchB)
 	{
 		if(matchA.size() > matchB.size())
 		{
@@ -117,24 +148,24 @@ public class OurClone {
 		}
 	}
 	
-	private boolean overlaps(List<Token> matchA, List<Token> matchB)
+	private boolean overlaps(List<String> matchA, List<String> matchB)
 	{
-		boolean match  = false;
-		for(int a = 0 ; a< matchA.size()-1; a++)
+		String substringA = "";
+		String substringB = "";
+		for(String token: matchA)
 		{
-			for(int b = 0 ; b< matchB.size();b++)
-			{
-				if(matchB.get(b).getTokenString().equals(matchA.get(a).getTokenString()))
-				{
-					match = true;
-					break;
-				}
-				else
-				{
-					match = false;
-				}
-			}
+			substringA += token;
 		}
+		for(String token: matchB)
+		{
+			substringB += token;
+		}
+		
+		if(substringA.contains(substringB))
+		{
+			return true;
+		}
+		return false;
 	}
 
 	//	private List<Token> getUnmrkedTokens(List<Token> tokens)
