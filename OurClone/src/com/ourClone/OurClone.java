@@ -195,6 +195,15 @@ public class OurClone {
 		return tokens;
 	}
 
+  private float getSimilarityPercentage(List<Match> tiles, List<Token> a, List<Token> b){
+    int coverage;
+    foreach (Match match in tiles){
+      coverage += match.getLength();
+    }
+    float similarity = 2 * coverage / (a.size() + b.size());
+    return similarity;
+  }
+  
 	private String parseFile(File file) throws IOException {
 
 		InputStream input = new FileInputStream(file);
