@@ -10,13 +10,18 @@ Report/main.tex - Compile this with pdflatex to get a pdf.
 
 ====
 
-1. title page done
+1. title page Done
 2. Introduction one page JIN
-3. four one page summaires done-ish
-4. requirements, done by yasaman LUKE
-5. UML LUKE
+3. four one page summaires
+3 a) Yas
+3 b) Jin
+3 c) Elliot
+3 d) Sachin
+3 e) Luke Done
+4. requirements Done
+5. UML LUKE Working on now
 6. implementation JIN
-7. test LUKE
+7. How is it tested? LUKE
 8. pairwise pairwise comparison JIN
 
 9. results and what we have learnt
