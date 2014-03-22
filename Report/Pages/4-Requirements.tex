@@ -1,4 +1,27 @@
 \section{Tool requirements}
 
-\subsection{Sub-section}
+\subsection{Overview}
+The following list of requirements are formed from the defined set of requirements in the coursework brief and based on our algorithm choice, plagiarism detection.
+\subsection{Requirements}
+\begin{enumerate}
+\item The tool must work via command line and should not have a graphical interface.
+
+\item Input taken should be the names of two files as command lines arguments.
+
+\item The output should be a similarity measure to STDOUT as a percentage.
+
+% Possible?
+\item The tool will output additional results from running the plagiarism detection algorithm
+
+\item Input Java source files will be parsed using a Java parser library, ANTLR.
+
+\item The tool will be written in Java (version 6) to meet the requirements for the parser library.
+
+\item The tool will not invoke the JPLAG binary or any other similarity testing tool.
+
+\item The output of similarity measurement by plagiarism detection algorithm will complete in reasonable time for expected inputs. Expected inputs are generally Java source code files and specifically under testing TOH.java, variants of TOH.java and arbitrary dissimilar test inputs.
+
+\item The tool will use the JUnit testing framework to carry out the pairwise comparison.
+
+\end{enumerate}
 \break
