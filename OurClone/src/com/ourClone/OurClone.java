@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -25,13 +26,12 @@ public class OurClone {
 		File fileA = new File(args[0]);
 		File fileB = new File(args[1]);
 
-		try 
-		{
+		try {
 			String tokensForFileA = c.parseFile(fileA);
 			String tokensForFileB = c.parseFile(fileB);
 
 			c.detect(tokensForFileA, tokensForFileB);
-		} 
+		}
 
 		catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -41,8 +41,7 @@ public class OurClone {
 
 	}
 
-	private void detect(String tokensStringsA, String tokensStringsB)
-	{
+	private void detect(String tokensStringsA, String tokensStringsB) {
 		List<Token> tokensA = getTokenObjects(tokensStringsA);
 		List<Token> tokensB = getTokenObjects(tokensStringsB);
 
@@ -50,57 +49,51 @@ public class OurClone {
 
 	}
 
-	private void compare(List<Token> tokensA, List<Token> tokensB) {
+	private Set<Match> compare(List<Token> tokensA, List<Token> tokensB) {
 
-		Set<Match> tiles = new ArrayList<Match>();
+		Set<Match> tiles = new HashSet<Match>();
 		int maxMatch;
 
-		do
-		{
+		do {
 			maxMatch = MINIMUM;
 			int j;
 			List<Match> matches = new ArrayList<Match>();
-			for(Token tokenA : tokensA)
-			{
-				if(!tokenA.isMarked())
-				{
-					for(Token tokenB : tokensB)
-					{
-						if(!tokenB.isMarked())
-						{
-							j=0;
+			for (Token tokenA : tokensA) {
+				if (!tokenA.isMarked()) {
+					for (Token tokenB : tokensB) {
+						if (!tokenB.isMarked()) {
+							j = 0;
 							int indexOfTokenA = tokensA.indexOf(tokenA);
 							int indexOfTokenB = tokensB.indexOf(tokenB);
-							Token tokenAj = tokensA.get(indexOfTokenA+j);
-							Token tokenBj = tokensA.get(indexOfTokenB+j);
+							Token tokenAj = tokensA.get(indexOfTokenA + j);
+							Token tokenBj = tokensA.get(indexOfTokenB + j);
 							String tokenAjString = tokenAj.getTokenString();
 							String tokenBjString = tokenBj.getTokenString();
-							while((tokenAjString.equals(tokenBjString))
-									&& !tokenAj.isMarked() && !tokenBj.isMarked())
-							{
+							while ((tokenAjString.equals(tokenBjString))
+									&& !tokenAj.isMarked()
+									&& !tokenBj.isMarked()) {
 								j++;
 							}
-							Match newMatch = new Match(indexOfTokenA, indexOfTokenB,j);
-							List<String> newMatchsubString  = getTokenSubString(tokensA, newMatch);
-							if(j == maxMatch)
-							{
+							Match newMatch = new Match(indexOfTokenA,
+									indexOfTokenB, j);
+							List<String> newMatchsubString = getTokenSubString(
+									tokensA, newMatch);
+							if (j == maxMatch) {
 								boolean overlaps = false;
 								List<String> matchSubString;
-								for(Match match : matches)
-								{	
-									matchSubString = getTokenSubString(tokensA, match);
-									if(isOverlapped(matchSubString, newMatchsubString )){
+								for (Match match : matches) {
+									matchSubString = getTokenSubString(tokensA,
+											match);
+									if (isOverlapped(matchSubString,
+											newMatchsubString)) {
 										overlaps = true;
 										break;
 									}
 								}
-								if(!overlaps)
-								{
+								if (!overlaps) {
 									matches.add(newMatch);
 								}
-							}
-							else if (j>maxMatch)
-							{
+							} else if (j > maxMatch) {
 								matches.clear();
 								matches.add(newMatch);
 								maxMatch = j;
@@ -109,85 +102,74 @@ public class OurClone {
 					}
 				}
 			}
-			for(Match match : matches)
-			{
-				for(int j = 0 ; j< maxMatch ; j++)
-				{
-					tokensA.get(match.getIndexA()+j).setMarked(true);
-					tokensB.get(match.getIndexB()+j).setMarked(true);
+			for (Match match : matches) {
+				for (j = 0; j < maxMatch; j++) {
+					tokensA.get(match.getIndexA() + j).setMarked(true);
+					tokensB.get(match.getIndexB() + j).setMarked(true);
 				}
-				tiles = tiles.
+				tiles.add(match);
 			}
 
-
-		}while(maxMatch > MINIMUM);
+		} while (maxMatch > MINIMUM);
+		return tiles;
 	}
-	
-	private List<String> getTokenSubString(List<Token> fullTokensList, Match match)
-	{
+
+	private List<String> getTokenSubString(List<Token> fullTokensList,
+			Match match) {
 		List<String> tokenSubString = new ArrayList<String>();
 		int startIndex = match.getIndexA();
-		for(int i = 0 ; i< match.getLength(); i++)
-		{
-			tokenSubString.add(fullTokensList.get(startIndex+i).getTokenString());
-			
+		for (int i = 0; i < match.getLength(); i++) {
+			tokenSubString.add(fullTokensList.get(startIndex + i)
+					.getTokenString());
+
 		}
-		
+
 		return tokenSubString;
 	}
-	
-	private boolean isOverlapped(List<String> matchA, List<String> matchB)
-	{
-		if(matchA.size() > matchB.size())
-		{
+
+	private boolean isOverlapped(List<String> matchA, List<String> matchB) {
+		if (matchA.size() > matchB.size()) {
 			return overlaps(matchA, matchB);
-		}
-		else
-		{
+		} else {
 			return overlaps(matchB, matchA);
 		}
 	}
-	
-	private boolean overlaps(List<String> matchA, List<String> matchB)
-	{
+
+	private boolean overlaps(List<String> matchA, List<String> matchB) {
 		String substringA = "";
 		String substringB = "";
-		for(String token: matchA)
-		{
+		for (String token : matchA) {
 			substringA += token;
 		}
-		for(String token: matchB)
-		{
+		for (String token : matchB) {
 			substringB += token;
 		}
-		
-		if(substringA.contains(substringB))
-		{
+
+		if (substringA.contains(substringB)) {
 			return true;
 		}
 		return false;
 	}
 
-	//	private List<Token> getUnmrkedTokens(List<Token> tokens)
-	//	{
-	//		List<Token> unmarkedTokens = new ArrayList<Token>();		
-	//		for(Token token : tokens)
-	//		{
-	//			if(!token.isMarked())
-	//			{
-	//				unmarkedTokens.add(token);
-	//			}
-	//		}
-	//		return unmarkedTokens;
-	//	}
+	// private List<Token> getUnmrkedTokens(List<Token> tokens)
+	// {
+	// List<Token> unmarkedTokens = new ArrayList<Token>();
+	// for(Token token : tokens)
+	// {
+	// if(!token.isMarked())
+	// {
+	// unmarkedTokens.add(token);
+	// }
+	// }
+	// return unmarkedTokens;
+	// }
 
-	private List<Token> getTokenObjects(String commaSeparatedtokenString)
-	{
-		String[] tokenStrings = commaSeparatedtokenString.split(OurCloneListener.DELIMETER);
+	private List<Token> getTokenObjects(String commaSeparatedtokenString) {
+		String[] tokenStrings = commaSeparatedtokenString
+				.split(OurCloneListener.DELIMETER);
 		List<Token> tokens = new ArrayList<Token>();
 
-		for(String token : tokenStrings)
-		{
+		for (String token : tokenStrings) {
 			Token tokenObject = new Token(token);
 			tokens.add(tokenObject);
 		}
@@ -207,11 +189,11 @@ public class OurClone {
 		// Create a parser that reads from the scanner
 		JavaParser parser = new JavaParser(new CommonTokenStream(lexer));
 
-		OurCloneListener listener = new OurCloneListener	();
+		OurCloneListener listener = new OurCloneListener();
 		// Add the listener that is responsible for the token printing
 		parser.addParseListener(listener);
 
-		//parse the file
+		// parse the file
 		parser.compilationUnit();
 
 		return listener.getTokens();
