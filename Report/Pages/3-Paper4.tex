@@ -1,4 +1,35 @@
-\section{Paper 4}
+\section{Latent Semantic Indexing}
+\href{http://www-nlp.stanford.edu/IR-book/}{Manning, Raghavan and Sch$\mathrm{\ddot{u}}$tze. Introduction to Information Retrieval: 18 Matrix decompositions \& latent semantic indexing. Cambridge University Press. 2008.}
+\subsection{Overview of technique}
+Latent Semantic Indexing (LSI) makes use of a term-document matrix, this is simply an $M x N$ matrix, where columns represent the number of documents in the collection and rows represent the terms. Calculation can then be carried out over this matrix to compute the LSI.
 
-\subsection{Sub-section}
+In the case of our tool, there would be two columns, for the pair of documents. The terms would be tokens, produced by some simple whitespace parser or potentially more complex grammar.
+
+\subsubsection{Low-rank approximation and computing similarity}
+LSI first requires an approximation of the term-document matrix into lower-dimensional space using singular value decomposition, an extension of symmetric diagonal decomposition. Symmetric diagonal decomposition is a technique in which a square matrix can be factored into the product of matrices derived from its eigenvectors. 
+
+This approximation is required as even medium sized term-document matrices can contain tens of thousands of terms, so this is required for LSI to be scalable.
+
+The mathematics of low-rank approximation is too complex to cover in a short summary, but the end result is a reduction of the size of the term-document matrix, while still maintaining differences and similarities between documents close to that of the original matrix.
+
+%\subsubsection{Computing similarity from Low-rank approximation}
+Once the low-rank approximation has been computed, the similarity between two documents can be calculated using cosine similarity.
+
+%Cosine similarity of two vectors:
+%\[\mathrm{similarity} = \frac{A.B}{\parallel A\parallel \parallel B \parallel}\]
+
+\subsection{Performance}
+Dumais 1993 and Dumais 1995 conducted experiments on TREC documents and tasks. They managed to achieve results with precision at or above the TREC median, achieving a top score on 20\% of topics. Therefore we can conclude that the accuracy of LIS is, in general, good.
+
+The performance of LSI is noted to be poor in terms of computational complexity. It is noted that "there have been no successful experiments with over one million documents". Although this is something of concern for some, for us this would be a tolerable limitation, considering we are only dealing with two input files.
+
+LSI is noted to "work best in applications where there is little overlap between queries and documents". For calculating document similarity, ideally we would have more linear performance and be similarly good at working with considerable overlap.
+
+LSI is a vector space model and as such treats documents as a 'bag of words'. This could either prove to improve similarity matching or degrade it, as source code can be sufficiently reordered to produce a program with distinct behaviour, but LSI will still produce results that show a close match. Conversely if someone was to rearrange code to attempt to disguise plagiarism, LSI matching would be unaffected.
+
+Finally there are two other limitations of LSI related to its vector space representation, its inability to cope with synonymy and polysemy. Synonymy refers to two distinct words having the same meaning and polysemy one word being having different meanings dependent on use.  This would be an issue for programming language code, where certain words, such as access modifiers and Java keywords are used frequently throughout text. 
+
+\subsection{Conclusion}
+Overall LSI seems to be a good similarity matching algorithm. However, for our particular use case, matching Java source code, the weaknesses due to it being a vector space model are likely to put it at a disadvantage to other models which take into account word ordering.
+
 \break
