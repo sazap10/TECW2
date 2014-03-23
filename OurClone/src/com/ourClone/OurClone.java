@@ -30,7 +30,8 @@ public class OurClone {
 			String tokensForFileA = c.parseFile(fileA);
 			String tokensForFileB = c.parseFile(fileB);
 
-			c.detect(tokensForFileA, tokensForFileB);
+			System.out.printf("Similarity of two files is: %f%%",
+					c.detect(tokensForFileA, tokensForFileB) * 100);
 		}
 
 		catch (FileNotFoundException e) {
@@ -41,11 +42,12 @@ public class OurClone {
 
 	}
 
-	private void detect(String tokensStringsA, String tokensStringsB) {
+	private float detect(String tokensStringsA, String tokensStringsB) {
 		List<Token> tokensA = getTokenObjects(tokensStringsA);
 		List<Token> tokensB = getTokenObjects(tokensStringsB);
 
-		compare(tokensA, tokensB);
+		Set<Match> tiles = compare(tokensA, tokensB);
+		return getSimilarityPercentage(tiles, tokensA, tokensB);
 
 	}
 
@@ -177,15 +179,16 @@ public class OurClone {
 		return tokens;
 	}
 
-  private float getSimilarityPercentage(List<Match> tiles, List<Token> a, List<Token> b){
-    int coverage;
-    foreach (Match match in tiles){
-      coverage += match.getLength();
-    }
-    float similarity = 2 * coverage / (a.size() + b.size());
-    return similarity;
-  }
-  
+	private float getSimilarityPercentage(Set<Match> tiles, List<Token> a,
+			List<Token> b) {
+		int coverage = 0;
+		for (Match match : tiles) {
+			coverage += match.getLength();
+		}
+		float similarity = 2 * coverage / (a.size() + b.size());
+		return similarity;
+	}
+
 	private String parseFile(File file) throws IOException {
 
 		InputStream input = new FileInputStream(file);
