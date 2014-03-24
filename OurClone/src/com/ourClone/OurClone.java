@@ -30,7 +30,7 @@ public class OurClone {
 			String tokensForFileA = c.parseFile(fileA);
 			String tokensForFileB = c.parseFile(fileB);
 
-			System.out.printf("Similarity of two files is: %f%%",
+			System.out.printf(" Similarity: %f%% \n",
 					c.detect(tokensForFileA, tokensForFileB) * 100);
 		}
 
@@ -191,7 +191,6 @@ public class OurClone {
 		for (Match match : tiles) {
 			coverage += match.getLength();
 		}
-		System.out.println(coverage);
 		float similarity = 2 * coverage / (float) (a.size() + b.size());
 		return similarity;
 	}
