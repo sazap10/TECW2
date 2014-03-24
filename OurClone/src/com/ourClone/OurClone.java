@@ -191,7 +191,8 @@ public class OurClone {
 		for (Match match : tiles) {
 			coverage += match.getLength();
 		}
-		float similarity = 2 * coverage / (a.size() + b.size());
+		System.out.println(coverage);
+		float similarity = 2 * coverage / (float) (a.size() + b.size());
 		return similarity;
 	}
 
