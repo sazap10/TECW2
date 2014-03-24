@@ -1,0 +1,140 @@
+/**
+ * This implementation is derived from the Tower of Hanoi Algorithm
+ * Source Code available at
+ * http://www.softwareandfinance.com/Java/TowerOfHanoi_Algorithm.html
+ * authored by Kathiresan.
+ */
+
+import java.io.*;
+import java.lang.*;
+import java.util.*;
+
+@SuppressWarnings("unchecked")
+class TOH {
+    static int count = 0;
+    static public void SolveTwoDiscsTowerOfHanoi ( Stack source, Stack temp, Stack dest ) {
+        temp.push ( source.pop() );
+        count++;
+        StacksPrint();
+        dest.push ( source.pop() );
+        count++;
+        StacksPrint();
+        dest.push ( temp.pop() );
+        count++;
+        StacksPrint();
+    }
+    static public int SolveTowerOfHanoi ( int nDiscs, Stack source, Stack temp, Stack dest ) {
+        if ( nDiscs <= 4 ) {
+            if ( ( nDiscs % 2 ) == 0 ) {
+                SolveTwoDiscsTowerOfHanoi ( source, temp, dest );
+                nDiscs = nDiscs - 1;
+                if ( nDiscs == 1 ) {
+                    return 1;
+                }
+                temp.push ( source.pop() );
+                count++;
+                StacksPrint();
+                SolveTwoDiscsTowerOfHanoi ( dest, source, temp );
+                dest.push ( source.pop() );
+                count++;
+                StacksPrint();
+                SolveTowerOfHanoi ( nDiscs, temp, source, dest );
+            } else {
+                if ( nDiscs == 1 ) {
+                    return -1;
+                }
+                SolveTwoDiscsTowerOfHanoi ( source, dest, temp );
+                nDiscs = nDiscs - 1;
+                dest.push ( source.pop() );
+                count++;
+                StacksPrint();
+                SolveTwoDiscsTowerOfHanoi ( temp, source, dest );
+            }
+            return 1;
+        } else if ( nDiscs >= 5 ) {
+            SolveTowerOfHanoi ( nDiscs - 2, source, temp, dest );
+            temp.push ( source.pop() );
+            count++;
+            StacksPrint();
+            SolveTowerOfHanoi ( nDiscs - 2, dest, source, temp );
+            dest.push ( source.pop() );
+            count++;
+            StacksPrint();
+            SolveTowerOfHanoi ( nDiscs - 1, temp, source, dest );
+        }
+        return 1;
+    }
+    static public Stack A = new Stack();
+    static public Stack B = new Stack();
+    static public Stack C = new Stack();
+    static public void StacksPrint() {
+        if ( aCount != A.size() ||
+                bCount != B.size() ||
+                cCount != C.size() ) {
+            int diffA = A.size() - aCount;
+            int diffB = B.size() - bCount;
+            int diffC = C.size() - cCount;
+            if ( diffA == 1 ) {
+                if ( diffB == -1 ) {
+                    System.out.print ( "Move Disc " + A.peek() + " From B To A" );
+                } else {
+                    System.out.print ( "Move Disc " + A.peek() + " From C To A" );
+                }
+            } else if ( diffB == 1 ) {
+                if ( diffA == -1 ) {
+                    System.out.print ( "Move Disc " + B.peek() + " From A To B" );
+                } else {
+                    System.out.print ( "Move Disc " + B.peek() + " From C To B" );
+                }
+            } else {
+                if ( diffA == -1 ) {
+                    System.out.print ( "Move Disc " + C.peek() + " From A To C" );
+                } else {
+                    System.out.print ( "Move Disc " + C.peek() + " From B To C" );
+                }
+            }
+            aCount = A.size();
+            bCount = B.size();
+            cCount = C.size();
+            System.out.println();
+        }
+        StackPrint ( A );
+        System.out.print ( " , " );
+        StackPrint ( B );
+        System.out.print ( " , " );
+        StackPrint ( C );
+        System.out.print ( " , " );
+    }
+    static int aCount = 0;
+    static int bCount = 0;
+    static int cCount = 0;
+    static public void StackPrint ( Stack s ) {
+        System.out.print ( s.toString() );
+    }
+    public static void main ( String[] args ) {
+        try {
+            int discmax = 0;
+            String stringinp = args[0];
+            count = 0;
+            discmax = Integer.parseInt ( stringinp );
+            if ( discmax <= 1 || discmax >= 10 ) {
+                System.out.println ( "Enter between 2 - 9" );
+                return;
+            }
+            for ( int i = discmax; i >= 1; i-- ) {
+                A.push ( i );
+            }
+            aCount = A.size();
+            bCount = B.size();
+            cCount = C.size();
+            StacksPrint();
+            SolveTowerOfHanoi ( discmax, A, B, C );
+            System.out.println ( "Total Moves = " + count );
+            while ( C.size() > 0 ) {
+                C.pop();
+            }
+        } catch ( Exception e ) {
+            e.printStackTrace();
+        }
+    }
+}
