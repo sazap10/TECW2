@@ -15,8 +15,15 @@ Clones
 14. Put all code in main block
 15. Extract methods
 16. Change iteration to recursion
-17. 
+17. Find java implementations of TOH
+18. Rearrange java keywords
+19. Write your own
+
 
 Not clones.
 1. Looks similar, isn't
 
+Actual files:
+
+test1: import statements and access modifiers
+test2: var/method names changed
