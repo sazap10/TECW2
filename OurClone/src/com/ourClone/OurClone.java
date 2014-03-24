@@ -67,23 +67,11 @@ public class OurClone {
 							j = 0;
 							int indexOfTokenA = tokensA.indexOf(tokenA);
 							int indexOfTokenB = tokensB.indexOf(tokenB);
-							/*
-							 * Token tokenAj = tokensA.get(indexOfTokenA + j);
-							 * Token tokenBj = tokensA.get(indexOfTokenB + j);
-							 * String tokenAjString = tokenAj.getTokenString();
-							 * String tokenBjString = tokenBj.getTokenString();
-							 * while ((tokenAjString.equals(tokenBjString)) &&
-							 * !tokenAj.isMarked() && !tokenBj.isMarked()) {
-							 * j++; tokenAj = tokensA.get(indexOfTokenA + j);
-							 * tokenBj = tokensA.get(indexOfTokenB + j);
-							 * tokenAjString = tokenAj.getTokenString();
-							 * tokenBjString = tokenBj.getTokenString(); }
-							 */
 							Token tokenAj, tokenBj;
 							String tokenAjString, tokenBjString;
 							do {
-								if (indexOfTokenA + j < tokensA.size()
-										|| indexOfTokenB + j < tokensB.size()) {
+								if (indexOfTokenA + j > tokensA.size() - 1
+										|| indexOfTokenB + j > tokensB.size() - 1) {
 									break;
 								}
 								tokenAj = tokensA.get(indexOfTokenA + j);
