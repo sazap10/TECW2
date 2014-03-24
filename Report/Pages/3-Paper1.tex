@@ -1,4 +1,32 @@
-\section{Paper 1}
+\section{Normalized Compression Distance}
+\href{http://arxiv.org/ftp/arxiv/papers/0809/0809.2553.pdf}{Vit\'{a}nyi, Paul MB and Balbach, Frank J and Cilibrasi, Rudi L and Li, Ming. Information theory and statistical learning: Normalized Information Distance. Springer. 2009.}
+\subsection{Background}
+Normalized compression distance is a method of computing the similarity between two documents of any kind whether this be two text files or two music files. It measures the difficulty of being able to turn one document to the other. This method of determining similarities between two files is based upon the Normalized Information Distance (NID) between them.
 
-\subsection{Sub-section}
+\subsection{Normalized Information Distance}
+The information distance between two strings $\boldsymbol{x}$ and $\boldsymbol{y}$ is defined to be the length of the shortest program, $\boldsymbol{p}$, for a universal computer to transform $\boldsymbol{x}$ into $\boldsymbol{y}$ and vice versa. The length of this program can be defined with the use of Kolmogorov complexity as follows:\\
+\begin{equation}
+\boldsymbol{|p| = \mathbf{max}\{K(x|y),K(y|x)\}}
+\end{equation}
+This distance is absolute and therefore needs to be normalized in order to provide the similarity in relative to both the files. Such an normalization provides the NID. \\
+\begin{equation}
+\boldsymbol{e(x,y) = \frac{\mathbf{max}\{K(x|y),K(y|x)\}}{\mathbf{max}\{K(x),K(y)\}}}
+\end{equation}
+
+\subsection{Normalized Compression Distance}
+The NID is however impractical as it uncomputable. Therefore requiring a computable algorithm is requires, such a algorithm is Normalized Compression Distance (NCD). Transforming the equation through substitution of the uncomputable function $\boldsymbol{K}$ with a real-world compression function $\boldsymbol{Z}$ provides the NCD, defines by
+\begin{equation}
+\boldsymbol{e_{Z}(x,y) = \frac{Z(xy)-\mathbf{min}\{Z(x),Z(y)\}}{\mathbf{max}\{Z(x),Z(y)\}}}
+\end{equation}
+where $\boldsymbol{Z(x)}$ is the length of the compression of string $\boldsymbol{x}$ using the compression function $\boldsymbol{Z}$.
+
+\subsection{Application}
+For the case of this project we are interested in similarities between Java source files, for which a variant of the NID can be used to measure the similarity. This variant named sum distance is defined by
+\begin{equation}
+    \boldsymbol{e_{\mathbf{sum}}(x,y) = \frac{K(x|y)+K(y|x)}{K(x,y)}}
+\end{equation}
+The two files are tokenized then compressed with a customized compressor to approximate the sum distance. 
+
+\subsection{Conclusion}
+NCD is able to provide a good score for the similarity between two files. Whilst the NCD algorithm and the variant sum distance are relatively easy to implement, the latter requires the need for the implementation of a custom compressor which is out of scope for this project. Furthermore these algorithms are unable to provide details about the nature of the similarities between the two Java source files. \\
 \break
