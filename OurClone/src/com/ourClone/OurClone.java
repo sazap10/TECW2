@@ -82,6 +82,10 @@ public class OurClone {
 							Token tokenAj, tokenBj;
 							String tokenAjString, tokenBjString;
 							do {
+								if (indexOfTokenA + j < tokensA.size()
+										|| indexOfTokenB + j < tokensB.size()) {
+									break;
+								}
 								tokenAj = tokensA.get(indexOfTokenA + j);
 								tokenBj = tokensB.get(indexOfTokenB + j);
 								tokenAjString = tokenAj.getTokenString();
