@@ -16,7 +16,7 @@ Report/main.tex - Compile this with pdflatex to get a pdf.
 3 a) Yas
 3 b) Jin
 3 c) Elliot
-3 d) Sachin
+3 d) Sachin Done
 3 e) Luke Done
 4. requirements Done
 5. UML LUKE Working on now
