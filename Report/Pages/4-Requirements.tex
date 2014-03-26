@@ -12,9 +12,6 @@ The following list of requirements are formed from the defined set of tool requi
 
 \item The output should be a similarity measure to STDOUT as a percentage.
 
-% Possible?
-\item The tool will output additional results from running the plagiarism detection algorithm
-
 \item Input Java source files will be parsed using a Java parser library, ANTLR.
 
 \item The tool will be written in Java (version 6) to meet the requirements for the parser library.
@@ -23,7 +20,7 @@ The following list of requirements are formed from the defined set of tool requi
 
 \item The output of similarity measurement by plagiarism detection algorithm will complete in reasonable time for expected inputs. Expected inputs are generally Java source code files and specifically under testing TOH.java, variants of TOH.java and arbitrary dissimilar test inputs.
 
-\item The tool will have an automated testing mechanism, using the JUnit testing framework to carry out pairwise comparison.
+\item The tool will have an automated testing mechanism to carry out pairwise comparison of the said files.
 
 \item The tool should work with all platforms the JVM works on that support ANTLR. The tool will be tested and run on Linux and Windows platforms.
 
