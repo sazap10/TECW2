@@ -1,0 +1,35 @@
+Clones
+1. Original
+2. Variable/method names changed
+3. Ordering of methods rearranged
+4. Specific import statements
+5. Object oriented version
+6. Change variable types int -> long
+7. for -> while loops
+8. while -> for loops
+9. if statements -> conditional ifs
+10. for -> enhanced for
+11. while to do while
+12. Introduce whitespace
+13. Change access modifiers public -> protected
+14. Put all code in main block
+15. Extract methods
+16. Change iteration to recursion
+17. Find java implementations of TOH
+18. Rearrange java keywords
+19. Write your own
+
+
+Not clones.
+1. Looks similar, isn't
+
+Actual files:
+
+test1: optimize import statements and public -> protected access modifiers
+test2: var/method names changed
+test3: rearrange method order
+test4: change all ints to longs
+test5: change indentation
+test6: change whiles -> fors, fors -> whiles
+test7: everything in one method
+test8: 
