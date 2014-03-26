@@ -3,9 +3,49 @@ The aim of testing in this project is to gain an understanding of the chosen alg
 
 The test script is written in Java and simply invokes the main method of our similarity testing main class. All possible pairs are tested together, including the reversal of pairs (although these will likely yield identical results), ie x,y and y,x combinations are tested.  
 
-Test inputs have been created and categorised using the criteria of the different clone types. These are:
+Test inputs have been created and categorised using the criteria of the different clone types:
 \begin{itemize}
-
+\item Type 1: Identical code segments, except for differences in layout and comments.
+\item Type 2: Structurally identical segments, except for differences in identifiers, primitive types, layout, and comments.
+\item Type 3: Similar segments including additions, modifications, and removal of statements, including coding style such as non-OO/OO.
+\item Type 4: Semantically equivalent segments, ie a clone such that the original code is unidentifiable.
 \end{itemize}
+(Source: Tools and Environments slides)
+The following listed test inputs have been generated with the different types of clones in mind, in order to be able to analyse the results of our pairwise comparison effectively and therefore are listed by category of clone type.
+\begin{tabbing}
+Type 1 Clones\\
+test3: Method order rearrange and additional comments added\\
+test5: Change identation of file\\
 
+\\Type 2 Clones\\
+test1: 'Optimize import statements' and access modifiers changed public to protected.\\
+test2: Variable and method names changed.\\
+test4: All ints changed to longs, while loops changed to for loops and for loops changed to while.\\
+
+\\Type 3 Clones\\
+test7: Program refactored to 3 methods.\\
+test8: Program altered to be Object-oriented.\\
+test9: Extra methods created through extracting code segments.\\
+test10: A combinbation of extra methods, optimized imports and object oriented style.\\
+test11: Changes in test10 as well as access modifiers.\\
+
+\\Type 4 clones\\
+test14: IDE code inspector 'fixes'.\\
+test12: Applied IDE code inspector 'fixes', coding style changed to OO and extra methods added.\\
+test13: Test 12 and all int literals changed to long objects.\\
+
+\\Different code for Tower of Hanoi\\
+test 15: Alternative 1: \href{http://www.sanfoundry.com/java-program-implement-solve-tower-of-hanoi-using-stacks/}{Sanfoundry solution}\\
+test 6: Alternative 2:
+\href{http://users.dickinson.edu/~braught/courses/cs132s03/code/TowerOfHanoi.src.html}{Dickinson college solution}\\
+
+\\Dissimilar code, solving a different problem\\
+test 16: \href{http://www.cs.utexas.edu/~scottm/cs307/javacode/codeSamples/SimpleWordCounter.java}{SimpleWordCounter}\\
+test 17: \href{http://www.cs.utexas.edu/~scottm/cs307/javacode/codeSamples/AirlineProblem.java}{AirlineProblem}\\
+\end{tabbing}
+
+ 
 \break
+
+
+
