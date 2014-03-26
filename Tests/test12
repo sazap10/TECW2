@@ -1,0 +1,167 @@
+/**
+ * This implementation is derived from the Tower of Hanoi Algorithm
+ * Source Code available at
+ * http://www.softwareandfinance.com/Java/TowerOfHanoi_Algorithm.html
+ * authored by Kathiresan.
+ */
+
+import java.lang.Exception;
+import java.lang.Integer;
+import java.lang.String;
+import java.lang.SuppressWarnings;
+import java.lang.System;
+import java.util.Stack;
+
+@SuppressWarnings("unchecked")
+class TOH {
+    private int movecount = 0;
+    void Solve2DiscsTOH(Stack source, Stack temp, Stack dest) {
+        temp.push ( source.pop() );
+        method1(source, dest);
+        dest.push ( temp.pop() );
+        movecount++;
+        PrintStacks();
+    }
+
+    private void method1(Stack source, Stack dest) {
+        movecount++;
+        PrintStacks();
+        dest.push ( source.pop() );
+        movecount++;
+        PrintStacks();
+    }
+
+    void SolveTOH(int nDiscs, Stack source, Stack temp, Stack dest) {
+        if ( nDiscs <= 4 ) {
+            if ( ( nDiscs % 2 ) == 0 ) {
+                Solve2DiscsTOH ( source, temp, dest );
+                nDiscs = nDiscs - 1;
+                if (method2(nDiscs, source, temp, dest)) return;
+                movecount++;
+                PrintStacks();
+                SolveTOH ( nDiscs, temp, source, dest );
+            } else {
+                if ( nDiscs == 1 ) {
+                    //return -1;
+                }
+                method3(nDiscs, source, temp, dest);
+            }
+            return;
+        } else if ( nDiscs >= 5 ) {
+            SolveTOH ( nDiscs - 2, source, temp, dest );
+            temp.push ( source.pop() );
+            movecount++;
+            PrintStacks();
+            SolveTOH ( nDiscs - 2, dest, source, temp );
+            dest.push ( source.pop() );
+            movecount++;
+            PrintStacks();
+            SolveTOH ( nDiscs - 1, temp, source, dest );
+        }
+    }
+
+    private void method3(int nDiscs, Stack source, Stack temp, Stack dest) {
+        Solve2DiscsTOH ( source, dest, temp );
+        nDiscs = nDiscs - 1;
+        dest.push ( source.pop() );
+        movecount++;
+        PrintStacks();
+        Solve2DiscsTOH ( temp, source, dest );
+    }
+
+    private boolean method2(int nDiscs, Stack source, Stack temp, Stack dest) {
+        if ( nDiscs == 1 ) {
+            return true;
+        }
+        temp.push ( source.pop() );
+        movecount++;
+        PrintStacks();
+        Solve2DiscsTOH ( dest, source, temp );
+        dest.push ( source.pop() );
+        return false;
+    }
+
+    private final Stack A = new Stack();
+    private final Stack B = new Stack();
+    private final Stack C = new Stack();
+    void PrintStacks() {
+        if ( countA != A.size() ||
+                countB != B.size() ||
+                countC != C.size() ) {
+            int diffA = A.size() - countA;
+            method4(diffA);
+            System.out.println();
+        }
+        PrintStack ( A );
+        System.out.print ( " , " );
+        PrintStack ( B );
+        System.out.print ( " , " );
+        PrintStack ( C );
+        System.out.print ( " , " );
+    }
+
+    private void method4(int diffA) {
+        int diffB = B.size() - countB;
+        int diffC = C.size() - countC;
+        if ( diffA == 1 ) {
+            if ( diffB == -1 ) {
+                System.out.print ( "Move Disc " + A.peek() + " From B To A" );
+            } else {
+                System.out.print ( "Move Disc " + A.peek() + " From C To A" );
+            }
+        } else if ( diffB == 1 ) {
+            if ( diffA == -1 ) {
+                System.out.print ( "Move Disc " + B.peek() + " From A To B" );
+            } else {
+                System.out.print ( "Move Disc " + B.peek() + " From C To B" );
+            }
+        } else {
+            if ( diffA == -1 ) {
+                System.out.print ( "Move Disc " + C.peek() + " From A To C" );
+            } else {
+                System.out.print ( "Move Disc " + C.peek() + " From B To C" );
+            }
+        }
+        countA = A.size();
+        countB = B.size();
+        countC = C.size();
+    }
+
+    private int countA = 0;
+    private int countB = 0;
+    private int countC = 0;
+    void PrintStack(Stack s) {
+        System.out.print ( s.toString() );
+    }
+    public static void main ( String[] args ) {
+        TOH toh = new TOH();
+        try {
+            int maxdisc;
+            String inpstring = args[0];
+            toh.movecount = 0;
+            maxdisc = Integer.parseInt ( inpstring );
+            if ( maxdisc <= 1 || maxdisc >= 10 ) {
+                System.out.println ( "Enter between 2 - 9" );
+                return;
+            }
+            for ( int i = maxdisc; i >= 1; i-- ) {
+                toh.A.push ( i );
+            }
+            toh.methodx(maxdisc);
+        } catch ( Exception e ) {
+            e.printStackTrace();
+        }
+    }
+
+    private void methodx(int maxdisc) {
+        countA = A.size();
+        countB = B.size();
+        countC = C.size();
+        PrintStacks();
+        SolveTOH(maxdisc, A, B, C);
+        System.out.println ( "Total Moves = " + movecount );
+        while ( C.size() > 0 ) {
+            C.pop();
+        }
+    }
+}

@@ -28,4 +28,3 @@ test9: extract methods
 
 test10: extracted methods, specific imports and OO
 test11: test10 + access modifiers changed.
-test12: applied IDE 'fixes' to code, OO and extracted methods
