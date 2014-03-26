@@ -1,29 +1,32 @@
-Clones
-1. Original
-2. Variable/method names changed
-3. Ordering of methods rearranged
-4. Specific import statements
-5. Object oriented version
-6. Change variable types int -> long
-7. for -> while loops
-8. while -> for loops
-9. if statements -> conditional ifs
-10. for -> enhanced for
-11. while to do while
-12. Introduce whitespace
-13. Change access modifiers public -> protected
-14. Put all code in main block
-15. Extract methods
-16. Change iteration to recursion
-17. Find java implementations of TOH
-18. Rearrange java keywords
-19. Write your own
+original: original
 
+Type 1 Clones
+test3: rearrange method order and additional comments
+test5: change indentation
 
-Not clones.
-1. Looks similar, isn't
-
-Actual files:
-
-test1: import statements and access modifiers
+Type 2 Clones
+test1: optimize import statements and public -> protected access modifiers
 test2: var/method names changed
+test4: change all ints to longs + change whiles -> fors, fors -> whiles
+
+Type 3 Clones
+test7: everything in one method
+test8: object oriented version
+test9: extract methods (Requires some code changes)
+
+Maybe 3/4?
+test10: extracted methods, specific imports and OO
+test11: test10 + access modifiers changed.
+
+Type 4 clones
+test12: applied IDE 'fixes' to code, OO and extracted methods
+test13: test12+ long is the new int
+test14: ide fixes only
+
+Not a clone
+test 15: same problem, different code: http://www.sanfoundry.com/java-program-implement-solve-tower-of-hanoi-using-stacks/
+test 6: same problem, different code: http://users.dickinson.edu/~braught/courses/cs132s03/code/TowerOfHanoi.src.html
+
+Some other programs:
+test 16: http://www.cs.utexas.edu/~scottm/cs307/javacode/codeSamples/SimpleWordCounter.java
+test 17: http://www.cs.utexas.edu/~scottm/cs307/javacode/codeSamples/AirlineProblem.java
