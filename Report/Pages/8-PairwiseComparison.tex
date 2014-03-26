@@ -1,4 +1,62 @@
 \section{Results of pairwise comparison}
-The pairwise comparison results are shown within the pairwisetest.txt file, listing the files tested against each other in addition to the similarity score. The results 
+The pairwise comparison results are shown within the pairwisetest.txt file, listing the files tested against each other in addition to the similarity score. 
+
+\subsection{Comparison file original file}
+Whilst comparing the original file to the Type 1-4 clones, variant of TOH and dissimilar code the results seem to indicate that the application works well. However there are some outliers where one of the dissimilar files, specifically test 17, the application classes that as a highly similar file. In addition to this anomaly we found that one of the Type 3 clone, test 7, outputs a lower similarity value than expected. This seems to suggest moving and combining methods causes the application to determine that the files are largely different.
+\begin{table}[h]
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|}
+\hline
+& \multicolumn{2}{|c|}{TOH} & \multicolumn{2}{|c|}{Dissimilar} & \multicolumn{2}{|c|}{Type 1} & \multicolumn{4}{|c|}{Type 2}  \\
+\hline
+  & 6    & 15  & 16   & 17 & 3   & 5 & 1   & 2 & 4 & 14  \\
+  \hline
+0 & 51\% & 48\% & 68\% & 48\% & 96\% & 100\% & 98\% & 100\% & 96\% & 99\% \\
+\hline
+\end{tabular}
+\end{table}
+\begin{table}[h]
+\begin{tabular}{|l|l|l|l|l|l|l|l|}
+\hline
+& \multicolumn{5}{|c|}{Type 3} & \multicolumn{2}{|c|}{Type 4} \\
+\hline
+  & 7   & 8 & 9 & 10 & 11 & 12 & 13 \\
+  \hline
+0 & 49\% & 99\% & 84\% & 82\% & 82\% & 88\% & 88\% \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Comparison with dissimilar files}
+The comparison of the dissimilar files, test 16, 17 with the other test files outputs some interesting results. Firstly the comparison with the test file 17 with most of the other files except a couple output a very high similarity score, which suggests the token set may be too small and therefore with a more diverse token set this problem could be rectified. The comparison with the other test file, 16 shows that the application determines dissimilar files well.
+\begin{table}[h]
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+\hline
+& \multicolumn{2}{|c|}{TOH} & \multicolumn{2}{|c|}{Type 1} & \multicolumn{4}{|c|}{Type 2} & \multicolumn{5}{|c|}{Type 3} & \multicolumn{2}{|c|}{Type 4} \\
+\hline
+  & 6    & 15  & 3   & 5 & 1   & 2 & 4 & 14 & 7   & 8 & 9 & 10 & 11 & 12 & 13  \\
+  \hline
+16 & 50\% & 37\% & 59\% & 61\% & 57\% & 61\% & 58\% & 63\% & 25\% & 60\% & 52\% & 54\% & 54\% & 55\% & 55\%\\
+\hline
+17 & 34\% & 51\% & 95\% & 95\% & 93\% & 95\% & 86\% & 91\% & 54\% & 94\% & 94\% & 94\% & 94\% & 92\% & 92\%  \\
+\hline
+\end{tabular}
+\end{table}
 
 \break
+\subsection{Comparison with TOH variants}
+The results of the pairwise comparison between the Tower of Hanoi and the clones mostly with the exception of one test file suggests that the files are most dissimilar. The anomaly being more dissimilar than the rest. This meets with the expectation since the implementation of solving tower of hanoi is considerably different to the original. One of the implementations is recursive as opposed to iterative in the original file and the other using stacks.
+
+\begin{table}[h]
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+\hline
+& \multicolumn{2}{|c|}{Type 1} & \multicolumn{4}{|c|}{Type 2} & \multicolumn{5}{|c|}{Type 3} & \multicolumn{2}{|c|}{Type 4} \\
+\hline
+  & 3   & 5 & 1   & 2 & 4 & 14 & 7   & 8 & 9 & 10 & 11 & 12 & 13 \\
+  \hline
+16 & 56\% & 50\% & 51\% & 50\% & 56\% & 52\% & 22\% & 56\% & 55\% & 58\% & 58\% & 59\% & 59\%  \\
+\hline
+16 & 34\% & 34\% & 35\% & 34\% & 33\% & 36\% & 15\% & 28\% & 35\% & 34\% & 34\% & 35\% & 35\%  \\
+\hline
+\end{tabular}
+\end{table}
+
