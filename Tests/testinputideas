@@ -25,5 +25,11 @@ Not clones.
 
 Actual files:
 
-test1: import statements and access modifiers
+test1: optimize import statements and public -> protected access modifiers
 test2: var/method names changed
+test3: rearrange method order
+test4: change all ints to longs
+test5: change indentation
+test6: change whiles -> fors, fors -> whiles
+test7: everything in one method
+test8: 
