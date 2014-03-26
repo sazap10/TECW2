@@ -13,22 +13,31 @@ Not clones.
 
 Actual files:
 original: original
+
+Type 1 Clones
+test3: rearrange method order and additional comments
+test5: change indentation
+
+Type 2 Clones
 test1: optimize import statements and public -> protected access modifiers
 test2: var/method names changed
-
-test3: rearrange method order (Type 1 clone)
-
-
 test4: change all ints to longs
-test5: change indentation
 test6: change whiles -> fors, fors -> whiles
+
+
+Type 3 Clones
 test7: everything in one method
 test8: object oriented version
-test9: extract methods
+test9: extract methods (Requires some code changes)
 
+Maybe 3/4?
 test10: extracted methods, specific imports and OO
 test11: test10 + access modifiers changed.
+
+Type 4 clones
 test12: applied IDE 'fixes' to code, OO and extracted methods
 test13: test12+ long is the new int
-
 test14: ide fixes only
+
+Not a clone
+test 15: same problem, different code

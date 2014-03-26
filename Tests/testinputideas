@@ -1,17 +1,3 @@
-Clones
-1. Original
-2. Variable/method names changed
-
-9. if statements -> conditional ifs
-17. Find java implementations of TOH
-
-19. Write your own
-
-
-Not clones.
-1. Looks similar, isn't
-
-Actual files:
 original: original
 
 Type 1 Clones
@@ -21,9 +7,7 @@ test5: change indentation
 Type 2 Clones
 test1: optimize import statements and public -> protected access modifiers
 test2: var/method names changed
-test4: change all ints to longs
-test6: change whiles -> fors, fors -> whiles
-
+test4: change all ints to longs + change whiles -> fors, fors -> whiles
 
 Type 3 Clones
 test7: everything in one method
@@ -40,4 +24,9 @@ test13: test12+ long is the new int
 test14: ide fixes only
 
 Not a clone
-test 15: same problem, different code
+test 15: same problem, different code: http://www.sanfoundry.com/java-program-implement-solve-tower-of-hanoi-using-stacks/
+test 6: same problem, different code: http://users.dickinson.edu/~braught/courses/cs132s03/code/TowerOfHanoi.src.html
+
+Some other programs:
+test 16: http://www.cs.utexas.edu/~scottm/cs307/javacode/codeSamples/SimpleWordCounter.java
+test 17: http://www.cs.utexas.edu/~scottm/cs307/javacode/codeSamples/AirlineProblem.java

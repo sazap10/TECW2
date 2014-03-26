@@ -79,19 +79,16 @@ class TOH {
                 System.out.println ( "Enter between 2 - 9" );
                 return;
             }
-            long i = maxdisc;
-            while(i >= 1) {
-                A.push(i);
-                i--;
+            for ( long i = maxdisc; i >= 1; i-- ) {
+                A.push ( i );
             }
-
             countA = A.size();
             countB = B.size();
             countC = C.size();
             PrintStacks();
             SolveTOH ( maxdisc, A, B, C );
             System.out.println ( "Total Moves = " + movecount );
-            for (; C.size() > 0; ) {
+            while ( C.size() > 0 ) {
                 C.pop();
             }
         } catch ( Exception e ) {
