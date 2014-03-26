@@ -1,9 +1,9 @@
 \section{Testing}
-The aim of testing in this project is to gain an understanding of the chosen algorithm's effectiveness in identifying file similarity. This has been achieved through the writing of a simple testing script in Java a number of test file inputs.
+The aim of testing in this project is to gain an understanding of the chosen algorithm's effectiveness in identifying file similarity. This has been achieved through the writing of a simple testing script in Java and a number of test file inputs.
 
 The test script is written in Java and simply invokes the main method of our similarity testing main class. All possible pairs are tested together, including the reversal of pairs (although these will likely yield identical results), ie x,y and y,x combinations are tested.  
 
-Test inputs have been created and categorised using the criteria of the different clone types:
+The following test inputs have been created and categorised using the criteria of the different clone types:
 \begin{itemize}
 \item Type 1: Identical code segments, except for differences in layout and comments.
 \item Type 2: Structurally identical segments, except for differences in identifiers, primitive types, layout, and comments.
@@ -11,7 +11,7 @@ Test inputs have been created and categorised using the criteria of the differen
 \item Type 4: Semantically equivalent segments, ie a clone such that the original code is unidentifiable.
 \end{itemize}
 (Source: Tools and Environments slides)
-The following listed test inputs have been generated with the different types of clones in mind, in order to be able to analyse the results of our pairwise comparison effectively and therefore are listed by category of clone type.
+The following listed test inputs have been generated with the different types of clones in mind, in order to be able to analyse the results of our pairwise comparison effectively and are therefore listed by category of clone type.
 \begin{tabbing}
 Type 1 Clones\\
 test3: Method order rearrange and additional comments added\\
