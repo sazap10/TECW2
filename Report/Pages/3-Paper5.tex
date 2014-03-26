@@ -16,7 +16,7 @@ The clone detection steps are as follows [1]:
 \centering
 \includegraphics{Figures/clonedetection}
 \caption{Clone detection}
-\label{fig:sample}
+\label{fig:clone}
 \end{figure}
 One of the applications that utilises clone detection is the CCFinder. It aims to be used in an industrial scale and to be applicable to million-line size system. The tool takes token sequences as comparison unit through a lexical analyser and applies rule-based transformation to the sequence, which enables the tool to be able to detect cloned code portions that have different syntax but may have similar meaning. CCFinder utilises suffix tree matching algorithm to detect clones. Suffix tree matching provides the position of the detected segments as a tree with sharing nodes that represents duplicates. CCFinder searches the leading nodes on the tree for clone detection.
 
