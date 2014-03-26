@@ -13,9 +13,9 @@ Report/main.tex - Compile this with pdflatex to get a pdf.
 1. title page Done
 2. Introduction one page JIN
 3. four one page summaires
-3 a) Yas
-3 b) Jin
-3 c) Elliot
+3 a) Yas Done
+3 b) Jin JIN
+3 c) Elliot Done
 3 d) Sachin Done
 3 e) Luke Done
 4. requirements Done
@@ -25,4 +25,4 @@ Report/main.tex - Compile this with pdflatex to get a pdf.
 8. pairwise pairwise comparison JIN
 
 9. results and what we have learnt
-10. responsibility
+10. responsibility Done
