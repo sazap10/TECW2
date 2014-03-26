@@ -2,10 +2,7 @@
  * This implementation is derived from the Tower of Hanoi Algorithm
  * Source Code available at
  * http://www.softwareandfinance.com/Java/TowerOfHanoi_Algorithm.html
- * authored by Kathiresan. 
- *
- * This comment has been modified. 
- * Thanks, Luke.
+ * authored by Kathiresan.
  */
 
 import java.io.*;
@@ -60,8 +57,7 @@ class TOH {
 
     static int movecount = 0;
     static public void Solve2DiscsTOH ( Stack source, Stack temp, Stack dest ) {
-       // How about a comment here??
-	temp.push ( source.pop() );
+        temp.push ( source.pop() );
         movecount++;
         PrintStacks();
         dest.push ( source.pop() );
@@ -115,8 +111,7 @@ class TOH {
             } else if ( diffB == 1 ) {
                 if ( diffA == -1 ) {
                     System.out.print ( "Move Disc " + B.peek() + " From A To B" );
-		// some extra comments                
-		} else {
+                } else {
                     System.out.print ( "Move Disc " + B.peek() + " From C To B" );
                 }
             } else {

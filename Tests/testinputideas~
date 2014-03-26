@@ -3,9 +3,6 @@ Clones
 2. Variable/method names changed
 
 9. if statements -> conditional ifs
-
-12. Introduce whitespace
-
 17. Find java implementations of TOH
 
 19. Write your own
@@ -18,7 +15,10 @@ Actual files:
 original: original
 test1: optimize import statements and public -> protected access modifiers
 test2: var/method names changed
-test3: rearrange method order
+
+test3: rearrange method order (Type 1 clone)
+
+
 test4: change all ints to longs
 test5: change indentation
 test6: change whiles -> fors, fors -> whiles
@@ -28,3 +28,7 @@ test9: extract methods
 
 test10: extracted methods, specific imports and OO
 test11: test10 + access modifiers changed.
+test12: applied IDE 'fixes' to code, OO and extracted methods
+test13: test12+ long is the new int
+
+test14: ide fixes only
